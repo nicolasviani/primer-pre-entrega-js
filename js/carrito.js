@@ -2,31 +2,37 @@
 let selectedProduct = "";
 let selectedModel = "";
 let selectedPrice = 0;
+let selectedSize = "";
 let quantity = 0;
 let addProduct = "";
-let size = "";
+let selectedDetail = "";
 let total = 0;
+
 
 const products = [
     {
         name: "Remeras de hombres",
         models: ["Remera Adidas", "Remera Nike"],
         price: [15000, 14000],
+        size: ["S", "M", "L", "XL"],
     },
     {
         name: "Remeras de mujeres",
         models: ["Remera Reebok", "Remera Fila"],
         price: [13000, 15000],
+        size: ["S", "M", "L", "XL"],
     },
     {
         name: "Pantalones de hombres",
         models: ["Pantalon Adidas", "Pantalon Nike"],
         price: [24000, 26000],
+        size: ["S", "M", "L", "XL"],
     },
     {
         name: "Pantalones de mujeres",
         models: ["Calza Deportiva Fila", "Calza Nike"],
         price: [26000, 24000],
+        size: ["S", "M", "L", "XL"],
     },
 ]
 
@@ -39,11 +45,11 @@ let userLastName = prompt("Ingrese su apellido de usuario para entrar al login p
 alert("Bienvenido " + userName + " " + userLastName);
 
 
+do{
 
-const productsMenu = products.map((product, index) => {
-    return "\n" + (index + 1) + "." + product.name;
-}).join(" ");
-
+    const productsMenu = products.map((product, index) => {
+        return "\n" + (index + 1) + "." + product.name;
+    }).join(" ");
 
     selectedProduct = prompt(`¿Que producto deseas llevar?\n${productsMenu}`);
 
@@ -55,26 +61,192 @@ const productsMenu = products.map((product, index) => {
 
     selectedModel = prompt(`¿Que modelo deseas llevar?\n${modelsMenu}`);
 
+    const model = product.models[selectedModel - 1];
+    const price = product.price[selectedModel - 1];
+
         while(quantity <= 0 || isNaN(quantity)){
 
             quantity = parseInt(prompt("¿Que cantidad deseas llevar?"));
         }
     alert("elejiste " + quantity + " unidad/es.");
 
-    function mostrarTalles(){
+    const sizeMenu = product.size.map((size, index) => {
+        return "\n" + (index + 1) + "." + size;
+    }).join(" ");
+
+    selectedSize = prompt(`¿Que talles estabas buscando?\n${sizeMenu}`);
+
+    const size = product.size[selectedSize - 1];
+
+    addProduct = prompt("¿Deseas agregar otro producto al carrito?");
+
+}while(addProduct === "si");
+
     
-        while(size != "S" && size != "M" && size != "L" && size != "XL"){
+    const detailMenu = products.map((products) => {
+        
+        selectedDetail = alert(`El detalle de tu compra ` + userName + " " + userLastName + `\nProducto: ${products.name} \nModelo: ${products.models[selectedModel - 1]} \nprecio: $${products.price[selectedModel - 1]} \nCantidad: ${quantity} \nTalle: ${products.size[selectedSize - 1]}`);
+    })
 
-            size = prompt("¿Que talles estabas buscando? ingresa el talle en mayusculas por favor.");
 
-        }
-    }
-    mostrarTalles();
+    // total = total + quantity * price;
 
-const model = product.models[selectedModel - 1];
-const price = product.price[selectedModel - 1];
+    // alert(userName + " " + userLastName + " " + "el total de tu compra es: $" + total);    
+    
 
-alert(`El detalle de tu compra ` + userName + " " + userLastName + `\nProducto: ${product.name} \nModelo: ${model} \nprecio: ${price} \nCantidad: ${quantity} \nTalle: ${size}`);
 
-total = total + quantity * price;
-alert(userName + " " + userLastName + " " + "el total de tu compra es: $" + total);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
