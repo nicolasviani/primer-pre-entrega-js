@@ -36,6 +36,8 @@ const products = [
     },
 ]
 
+
+
 alert("Bienvenidos al carrito de Mamba Design.");
 
 let userName = prompt("Ingrese su nombre de usuario para entrar al login por favor.");
@@ -83,11 +85,10 @@ do{
 }while(addProduct === "si");
 
     
-    const detailMenu = products.map((products) => {
-        
-        selectedDetail = alert(`El detalle de tu compra ` + userName + " " + userLastName + `\nProducto: ${products.name} \nModelo: ${products.models[selectedModel - 1]} \nprecio: $${products.price[selectedModel - 1]} \nCantidad: ${quantity} \nTalle: ${products.size[selectedSize - 1]}`);
-    })
+    const shoppingCart = [];
 
+    shoppingCart.push(`el detalle de tu compra ` + userName + " " + userLastName + `\nProducto: ${productsMenu} \nModelo: ${selectedModel} \nPrecio: $${selectedPrice} \nCantidad: ${quantity} \nTalle: ${selectedSize}`);
+        alert(shoppingCart);
 
     // total = total + quantity * price;
 
