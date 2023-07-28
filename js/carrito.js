@@ -6,7 +6,7 @@ let selectedSize = "";
 let quantity = 0;
 let addProduct = "";
 let selectedDetail = "";
-let total = 0;
+
 
 
 const products = [
@@ -36,8 +36,6 @@ const products = [
     },
 ]
 
-
-
 alert("Bienvenidos al carrito de Mamba Design.");
 
 let userName = prompt("Ingrese su nombre de usuario para entrar al login por favor.");
@@ -46,6 +44,7 @@ let userLastName = prompt("Ingrese su apellido de usuario para entrar al login p
 
 alert("Bienvenido " + userName + " " + userLastName);
 
+const shoppingCart = [];
 
 do{
 
@@ -64,7 +63,7 @@ do{
     selectedModel = prompt(`¿Que modelo deseas llevar?\n${modelsMenu}`);
 
     const model = product.models[selectedModel - 1];
-    const price = product.price[selectedModel - 1];
+    selectedPrice = product.price[selectedModel - 1];
 
         while(quantity <= 0 || isNaN(quantity)){
 
@@ -80,77 +79,29 @@ do{
 
     const size = product.size[selectedSize - 1];
 
+    const selectedProductObj = {
+
+        productName: product.name,
+        model: model,
+        price: selectedPrice,
+        quantity: quantity,
+        size: size
+    };
+    shoppingCart.push(selectedProductObj);
+    
     addProduct = prompt("¿Deseas agregar otro producto al carrito?");
+    quantity = 0;
 
 }while(addProduct === "si");
 
+    selectedDetail=`El detalle de tu compra ` + userName + " " + userLastName;
+    for(const item of shoppingCart){
+        selectedDetail += `\nProducto: ${item.productName} \nModelo: ${item.model} \nPrecio: $${item.price} \nCantidad: ${item.quantity} \nTalle: ${item.size}\n`;
+    }
+    alert(selectedDetail);
     
-    const shoppingCart = [];
-
-    shoppingCart.push(`el detalle de tu compra ` + userName + " " + userLastName + `\nProducto: ${productsMenu} \nModelo: ${selectedModel} \nPrecio: $${selectedPrice} \nCantidad: ${quantity} \nTalle: ${selectedSize}`);
-        alert(shoppingCart);
-
-    // total = total + quantity * price;
-
-    // alert(userName + " " + userLastName + " " + "el total de tu compra es: $" + total);    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    const total = shoppingCart.reduce((acumulador, product) => acumulador + (product.price * product.quantity),0)
+    alert("total de tu compra es: $" + total);
 
 
 
