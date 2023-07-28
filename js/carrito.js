@@ -100,8 +100,8 @@ do{
     }
     alert(selectedDetail);
     
-    const total = shoppingCart.reduce((acumulador, product) => acumulador + (product.price * product.quantity),0)
-    alert("total de tu compra es: $" + total);
+    const total = shoppingCart.reduce((accumulator, product) => accumulator + (product.price * product.quantity),0)
+    alert("El total de tu compra es: $" + total);
 
 
 
